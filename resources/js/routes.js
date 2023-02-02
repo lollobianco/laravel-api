@@ -28,6 +28,11 @@ const router = new VueRouter({
       path: '/posts',
       name: 'posts',
       component: PostsIndex,
+    },
+    {
+      path: '/posts/:id',
+      name: 'postshow',
+      component: PostShow,
     }
     
   ]

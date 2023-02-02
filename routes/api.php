@@ -21,5 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('api')->prefix('/posts')->group(function(){
     
     Route::get('/', 'PostController@index'); // -> Genera: localhost:8080/api/posts
+    Route::get('/{id}', 'PostController@show');
 
 });

@@ -4,26 +4,32 @@
 
     <Loader v-if="isLoading" class="px-3" />
 
-    <div>
+    <div class="w-100">
       <div class="p-0" v-if="posts.length">
         
         <div v-for="post in posts" :key="post.id" class="mb-4 text-white d-flex">
-    
           
           <div class="rounded-left card-body col-7 bg-secondary">
-            <h3 class="card-title">{{ post.title }}</h3>
+            <router-link :to="`/posts/${post.id}`">
+              <h3 class="card-title">{{ post.title }}</h3>
+            </router-link>
             <span v-for="tag in post.tags" :key="tag.id" class="badge bg-light text-dark mb-3 mr-2">{{ tag.name }}</span>
             <div class="d-flex">
               <h4 class="card-text mb-2">{{ post.category.name }}</h4>
             </div>
             <div class="card-text mb-3">{{post.body.substring(0,450)+"..."}}</div>
+            <router-link :to="`/posts/${post.id}`" class="btn btn-primary mr-3 align-self-end">
+                Show Post
+            </router-link>
           </div>
           
-          <div class="rounded-right col-5 card-body bg-secondary shadow-sm d-flex align-items-center justify-content-center">
-            <img :src="'/storage/' + post.cover" class="card-img-top rounded p-1 bg-light shadow-lg" alt="...">
+          <div class="rounded-right col-5 card-body bg-secondary d-flex align-items-center justify-content-center">
+            <img v-if="post.cover" :src="'/storage/' + post.cover" class="card-img-top rounded p-1 bg-light" alt="...">
+            <h3 v-else>No picture available</h3>
           </div>
 
         </div>
+
 
       </div>
 
@@ -87,5 +93,9 @@ export default {
 <style scoped lang="scss">
 li {
   list-style-type: none;
+}
+
+a{
+  color: white;
 }
 </style>
