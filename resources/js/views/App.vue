@@ -1,22 +1,20 @@
 <template>
   <div>
 
-    <h1>Welcome in BooleFood</h1>
-    <PostsList/>
+    <NavBar/>
 
+    <router-view></router-view>
     
   </div>
 </template>
 
 <script>
-import PostsList from '../components/posts/PostsList.vue';
+import NavBar from '../components/NavBar.vue';
 
 export default {
   name: "App",
   components: {
-
-    PostsList,
-    
+    NavBar,
   },
   data(){
     return{
@@ -37,3 +35,9 @@ export default {
   }
 };
 </script>
+
+<style>
+
+  
+
+</style>

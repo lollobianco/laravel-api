@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
-<body>
+<body class="bg-dark">
   {{-- Inseriamo Vue --}}
   <div id="root">
 

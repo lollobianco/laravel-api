@@ -1,17 +1,38 @@
 <template>
-  <div>
+  <div class="d-flex flex-column align-items-center container">
     <!-- Uso il loader -->
 
     <Loader v-if="isLoading" class="px-3" />
 
     <div>
-      <ul v-if="posts.length">
-        <li v-for="elem in posts" :key="elem.id">{{ elem.title }}</li>
-      </ul>
+      <div class="p-0" v-if="posts.length">
+        
+        <div v-for="post in posts" :key="post.id" class="mb-4 text-white d-flex">
+    
+          
+          <div class="rounded-left card-body col-7 bg-secondary">
+            <h3 class="card-title">{{ post.title }}</h3>
+            <span v-for="tag in post.tags" :key="tag.id" class="badge bg-light text-dark mb-3 mr-2">{{ tag.name }}</span>
+            <div class="d-flex">
+              <h4 class="card-text mb-2">{{ post.category.name }}</h4>
+            </div>
+            <div class="card-text mb-3">{{post.body.substring(0,450)+"..."}}</div>
+          </div>
+          
+          <div class="rounded-right col-5 card-body bg-secondary shadow-sm d-flex align-items-center justify-content-center">
+            <img :src="'/storage/' + post.cover" class="card-img-top rounded p-1 bg-light shadow-lg" alt="...">
+          </div>
+
+        </div>
+
+      </div>
+
       <p v-else>Non ci sono posts nel DB</p>
+
     </div>
 
-    <Pagination :pagination="pagination" @on-page-change="getPosts"/>
+
+    <Pagination :pagination="pagination" @on-page-change="getPosts" />
 
   </div>
 </template>
@@ -64,4 +85,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+li {
+  list-style-type: none;
+}
 </style>
